@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const apiRoutes = require('./routes/api.js');
 const fccTestingRoutes = require('./routes/fcctesting.js');
@@ -21,6 +22,8 @@ app.use(function (req, res, next) {
   });
   next();
 });
+
+app.use(cors({ origin: '*' }));
 
 app.use('/public', express.static(process.cwd() + '/public'));
 
